@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mksai.springboot.CustomerMapper">
+
+	<select id="countCustomer" resultType="long">
+		select count(*) from customer
+	</select>
+	
+	<select id="selectCustomer" resultType="com.mksai.springboot.Customer">
+		select
+			cust_id
+			,cust_name
+			,address
+			,tel
+			,fax
+		from customer
+	</select>
+	
+	<select id="countCustomerWhereIdName" parameterType="String" resultType="long">
+		select count(*) from customer
+		where cust_id = #{cust_id} and cust_name = #{cust_name}
+	</select>
+
+	<select id="selectCustomerWhereIdName" parameterType="String" resultType="com.mksai.springboot.Customer">
+		select
+			cust_id
+			,cust_name
+			,address
+			,tel
+			,fax
+		from customer
+		where cust_id = #{cust_id} and cust_name = #{cust_name}
+	</select>
+	
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mksai.springboot.ProductMapper">
+
+	<select id="countProduct" resultType="long">
+		select count(*) from product
+	</select>
+	
+	<select id="selectProduct" resultType="com.mksai.springboot.Product">
+		select
+			prod_id
+			,prod_name
+			,model_no
+			,cost
+			,discount
+		from product
+	</select>
+	
+</mapper>
