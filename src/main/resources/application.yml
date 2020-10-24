@@ -4,4 +4,10 @@ spring:
     username: kasai
     password: 9001184
     driver-class-name: com.mysql.cj.jdbc.Driver
-   
+  
+logging:
+  level:
+    com:
+      mksai:
+        springboot: DEBUG
+ 

@@ -5,13 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MybatisRestController {
 	
 	@Autowired
-	CustomerRepository customerRepository;
+	CustomerSelectCustomerService customerSelectCustomerService;
+	
 	@Autowired
 	EmployeeRepository employeeRepository;
 	@Autowired
@@ -24,8 +26,13 @@ public class MybatisRestController {
 	SalesRepository salesRepository;
 
 	@RequestMapping(value = "/customer", method = RequestMethod.GET)
-	public List<Customer> getJsonCustomer() {
-		List<Customer> result = customerRepository.selectCustomer();
+	public List<Customer> getJsonCustomer(
+			@RequestParam(name = "cust_id", required = false) String cust_id, 
+			@RequestParam(name = "cust_name", required = false) String cust_name) {
+		Customer customer = new Customer();
+		customer.setCust_id(cust_id);
+		customer.setCust_name(cust_name);
+		List<Customer> result = customerSelectCustomerService.executeService(customer);
 		return result;
 	}
 	

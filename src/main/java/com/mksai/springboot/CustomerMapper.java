@@ -8,9 +8,9 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface CustomerMapper {
 	
-	long countCustomer();
+	long countCustomer(@Param("criteria") Customer customer);
 	
-	List<Customer> selectCustomer();
+	List<Customer> selectCustomer(@Param("criteria") Customer customer);
 	
 	long countCustomerWhereIdName(@Param("cust_id") String cust_id, @Param("cust_name") String cust_name);
 	

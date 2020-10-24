@@ -6,6 +6,7 @@
 
 	<select id="countCustomer" resultType="long">
 		select count(*) from customer
+		<include refid="customerWhere"></include>
 	</select>
 	
 	<select id="selectCustomer" resultType="com.mksai.springboot.Customer">
@@ -16,22 +17,15 @@
 			,tel
 			,fax
 		from customer
+		<include refid="customerWhere"></include>
 	</select>
 	
-	<select id="countCustomerWhereIdName" parameterType="String" resultType="long">
-		select count(*) from customer
-		where cust_id = #{cust_id} and cust_name = #{cust_name}
-	</select>
-
-	<select id="selectCustomerWhereIdName" parameterType="String" resultType="com.mksai.springboot.Customer">
-		select
-			cust_id
-			,cust_name
-			,address
-			,tel
-			,fax
-		from customer
-		where cust_id = #{cust_id} and cust_name = #{cust_name}
-	</select>
+	<sql id="customerWhere">
+		<where>
+			<if test="criteria.cust_id != null">
+				cust_id = #{criteria.cust_id}
+			</if>
+		</where>
+	</sql>
 	
 </mapper>

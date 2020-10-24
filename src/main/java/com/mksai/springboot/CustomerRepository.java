@@ -11,13 +11,13 @@ public class CustomerRepository {
 	@Autowired
 	CustomerMapper customerMapper;
 	
-	public long countCustomer() {
-		long rtn = customerMapper.countCustomer();
+	public long countCustomer(Customer customer) {
+		long rtn = customerMapper.countCustomer(customer);
 		return rtn;
 	}
 	
-	public List<Customer> selectCustomer() {
-		List<Customer> rtn = customerMapper.selectCustomer();
+	public List<Customer> selectCustomer(Customer customer) {
+		List<Customer> rtn = customerMapper.selectCustomer(customer);
 		return rtn;
 	}
 	
